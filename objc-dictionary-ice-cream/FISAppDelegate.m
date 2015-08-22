@@ -20,10 +20,34 @@
     return YES;
 }
 
-/**
- 
- * Write your custom method bodies here.
- 
- */
+- (NSArray *)namesForIceCream:(NSString *)iceCream {
+    
+    NSDictionary *iceCreamByName = @{ @"Joe"    : @"Peanut Butter and Chocolate",
+                        @"Tim"    : @"Natural Vanilla"            ,
+                        @"Sophie" : @"Mexican Chocolate"          ,
+                        @"Deniz"  : @"Natural Vanilla"            ,
+                        @"Tom"    : @"Mexican Chocolate"          ,
+                        @"Jim"    : @"Natural Vanilla"            ,
+                        @"Mark"   : @"Cookies 'n Cream"          };
+
+    NSMutableArray *names = [NSMutableArray new];
+    
+    for (NSString *key in [iceCreamByName allKeys]) {
+        if ([iceCreamByName[key] isEqualToString:iceCream]) {
+            [names addObject:key];
+        }
+    }
+    
+    return names;
+}
+- (NSDictionary *)countsOfIceCream:(NSDictionary *)iceCreamByName {
+    
+    NSMutableDictionary *countsOfIceCream = [NSMutableDictionary new];
+    
+    for (NSString *key in [iceCreamByName allKeys]) {
+        countsOfIceCream[iceCreamByName[key]] = @([[self namesForIceCream:iceCreamByName[key]] count]);
+    }
+    return countsOfIceCream;
+}
 
 @end
